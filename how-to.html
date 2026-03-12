@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ご利用方法 | ペットシッター nounou -ヌヌ-</title>
-  <meta name="description" content="ペットシッターnounouのご利用の流れと注意事項をご説明します。お問い合わせから当日のお世話まで、安心してご依頼いただけます。">
+  <title>ご利用の流れ | ペットシッター nounou -ヌヌ- 晴海・勝どき・月島・豊洲</title>
+  <meta name="description" content="ペットシッターnounouのご利用の流れを6ステップでご説明。お問い合わせから事前カウンセリング、当日のお世話まで、初めての方でも安心してご依頼いただけます。">
   <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://petsitter-nounou.github.io/how-to.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Petsitter nounou">
+  <meta property="og:title" content="ご利用の流れ | ペットシッター nounou -ヌヌ-">
+  <meta property="og:description" content="ペットシッターnounouのご利用の流れを6ステップでご説明。お問い合わせから事前カウンセリング、当日のお世話まで、初めての方でも安心してご依頼いただけます。">
+  <meta property="og:url" content="https://petsitter-nounou.github.io/how-to.html">
+  <meta property="og:image" content="https://petsitter-nounou.github.io/images/hero-bg.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     /* ===== ページヒーロー ===== */
     .page-hero {
@@ -196,16 +206,17 @@
         <li><a href="index.html#features">選ばれる理由</a></li>
         <li><a href="index.html#services">サービス</a></li>
         <li><a href="how-to.html" style="color:var(--brown);">ご利用方法</a></li>
-        <li><a href="index.html#about">ご挨拶</a></li>
+        <li><a href="about.html">自己紹介</a></li>
+        <li><a href="pricing.html">ご利用料金表</a></li>
         <li><a href="index.html#area">対応エリア</a></li>
         <li><a href="index.html#contact">お問い合わせ</a></li>
         <li><a href="terms.html">ご利用規約</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
-      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">LINE で相談する</a>
+      <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="btn btn-line">LINE で相談する</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -328,11 +339,17 @@
     <h2>ご不明な点はお気軽にどうぞ</h2>
     <p>ご予約・ご質問は LINE または お電話にて承っております。<br>まずはお気軽にご連絡ください。</p>
     <div class="cta-btns">
-      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">💬 LINE で相談する</a>
-      <a href="tel:08062432219" class="btn" style="background:#fff; color:var(--brown);">📞 電話で相談する</a>
+      <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="btn btn-line">💬 LINE で相談する</a>
+      <a href="tel:08062432219" class="btn btn-white">📞 電話で相談する</a>
     </div>
   </div>
 </section>
+
+<!-- ===== モバイル固定CTA ===== -->
+<div class="mobile-cta-bar">
+  <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="mcta-line">LINE で相談</a>
+  <a href="tel:08062432219" class="mcta-tel">電話で相談</a>
+</div>
 
 <!-- ===== フッター ===== -->
 <footer>
@@ -340,9 +357,11 @@
     <a href="index.html">ホーム</a>
     <a href="index.html#services">サービス</a>
     <a href="how-to.html">ご利用方法</a>
-    <a href="index.html#about">ご挨拶</a>
+    <a href="about.html">自己紹介</a>
+    <a href="pricing.html">ご利用料金表</a>
     <a href="index.html#area">対応エリア</a>
     <a href="index.html#contact">お問い合わせ</a>
+    <a href="terms.html">ご利用規約</a>
   </div>
   <p>© 2025 Petsitter nounou. All rights reserved.</p>
 </footer>
@@ -350,8 +369,16 @@
 <script>
   const toggle = document.getElementById('navToggle');
   const links  = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'メニューを開く');
+  }));
 </script>
 
 </body>

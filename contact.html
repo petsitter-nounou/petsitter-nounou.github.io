@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ | ペットシッター nounou -ヌヌ-</title>
-  <meta name="description" content="ペットシッターnounouへのお問い合わせはLINE・お電話・メールフォームにて承っております。お気軽にご連絡ください。">
+  <title>お問い合わせ | ペットシッター nounou -ヌヌ- 晴海・勝どき・月島・豊洲</title>
+  <meta name="description" content="ペットシッターnounouへのご予約・ご相談はLINE・お電話・メールで。LINEが一番早くお返事できます。晴海・勝どき・月島・豊洲エリアの訪問ペットシッター。">
   <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://petsitter-nounou.github.io/contact.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Petsitter nounou">
+  <meta property="og:title" content="お問い合わせ | ペットシッター nounou -ヌヌ-">
+  <meta property="og:description" content="ペットシッターnounouへのご予約・ご相談はLINE・お電話・メールで。LINEが一番早くお返事できます。晴海・勝どき・月島・豊洲エリアの訪問ペットシッター。">
+  <meta property="og:url" content="https://petsitter-nounou.github.io/contact.html">
+  <meta property="og:image" content="https://petsitter-nounou.github.io/images/hero-bg.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     /* ===== ページヒーロー ===== */
     .page-hero {
@@ -207,9 +217,9 @@
       </ul>
     </nav>
     <div class="nav-cta">
-      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">LINE で相談する</a>
+      <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="btn btn-line">LINE で相談する</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -231,7 +241,7 @@
         <div class="m-icon">💬</div>
         <h3>LINE</h3>
         <p class="m-label">一番お返事が早いです。<br>QRコードまたは下のボタンから。</p>
-        <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line" style="font-size:0.85rem; padding:10px 20px;">友だち追加</a>
+        <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="btn btn-line" style="font-size:0.85rem; padding:10px 20px;">友だち追加</a>
         <div class="line-qr">
           <img src="images/line-qr.jpg" alt="LINE QRコード">
           <span class="qr-note">QRコードを読み取って友だち追加</span>
@@ -331,6 +341,12 @@
   </div>
 </section>
 
+<!-- ===== モバイル固定CTA ===== -->
+<div class="mobile-cta-bar">
+  <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="mcta-line">LINE で相談</a>
+  <a href="tel:08062432219" class="mcta-tel">電話で相談</a>
+</div>
+
 <!-- ===== フッター ===== -->
 <footer>
   <div class="footer-links">
@@ -349,8 +365,16 @@
 <script>
   const toggle = document.getElementById('navToggle');
   const links  = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'メニューを開く');
+  }));
 
   // 送信完了メッセージ
   const params = new URLSearchParams(window.location.search);

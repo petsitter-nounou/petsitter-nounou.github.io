@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ご利用料金表 | ペットシッター nounou -ヌヌ-</title>
-  <meta name="description" content="ペットシッターnounouの料金表。お世話代行・お散歩代行のご利用料金をご確認いただけます。">
+  <title>料金表 | ペットシッター nounou -ヌヌ- 晴海・勝どき・月島・豊洲</title>
+  <meta name="description" content="ペットシッターnounouの料金表。お世話代行は1回4,500円から、お散歩代行は30分3,000円から。晴海・勝どき・月島・豊洲エリア対応。計算例つきでわかりやすくご案内します。">
   <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://petsitter-nounou.github.io/pricing.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Petsitter nounou">
+  <meta property="og:title" content="料金表 | ペットシッター nounou -ヌヌ-">
+  <meta property="og:description" content="ペットシッターnounouの料金表。お世話代行は1回4,500円から、お散歩代行は30分3,000円から。晴海・勝どき・月島・豊洲エリア対応。計算例つきでわかりやすくご案内します。">
+  <meta property="og:url" content="https://petsitter-nounou.github.io/pricing.html">
+  <meta property="og:image" content="https://petsitter-nounou.github.io/images/hero-bg.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     /* ===== ページヒーロー ===== */
     .page-hero {
@@ -168,9 +178,9 @@
       </ul>
     </nav>
     <div class="nav-cta">
-      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">LINE で相談する</a>
+      <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="btn btn-line">LINE で相談する</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -180,7 +190,7 @@
 <div class="page-hero">
   <p class="section-label">Pricing</p>
   <h1>ご利用料金表</h1>
-  <p>料金はお世話する動物の種類・頭数によって異なります。<br>お気軽にご相談ください。</p>
+  <p>料金はお世話する動物の種類・頭数によって異なります。<br>計算例もご用意していますので、ご参考にしてください。</p>
 </div>
 
 <!-- ===== 料金表 ===== -->
@@ -230,7 +240,7 @@
         <div class="example-card">
           <div class="ex-label">計算例③</div>
           猫5匹<br>
-          <span class="ex-result">4,500円 ＋ 1,000円×3 ＝ 7,500円</span>
+          <span class="ex-result">4,500円 ＋ 1,000円×4 ＝ 8,500円</span>
         </div>
       </div>
     </div>
@@ -343,11 +353,17 @@
     <h2>料金についてのご質問もお気軽に</h2>
     <p>複数のペットがいる方、特殊なご要望がある方も<br>まずはご相談ください。</p>
     <div class="cta-btns">
-      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">💬 LINE で相談する</a>
-      <a href="tel:08062432219" class="btn" style="background:#fff; color:var(--brown);">📞 電話で相談する</a>
+      <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="btn btn-line">💬 LINE で相談する</a>
+      <a href="tel:08062432219" class="btn btn-white">📞 電話で相談する</a>
     </div>
   </div>
 </section>
+
+<!-- ===== モバイル固定CTA ===== -->
+<div class="mobile-cta-bar">
+  <a href="https://lin.ee/JWLn2HG" target="_blank" rel="noopener noreferrer" class="mcta-line">LINE で相談</a>
+  <a href="tel:08062432219" class="mcta-tel">電話で相談</a>
+</div>
 
 <!-- ===== フッター ===== -->
 <footer>
@@ -358,6 +374,7 @@
     <a href="about.html">自己紹介</a>
     <a href="pricing.html">ご利用料金表</a>
     <a href="index.html#contact">お問い合わせ</a>
+    <a href="terms.html">ご利用規約</a>
   </div>
   <p>© 2025 Petsitter nounou. All rights reserved.</p>
 </footer>
@@ -365,8 +382,16 @@
 <script>
   const toggle = document.getElementById('navToggle');
   const links  = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'メニューを開く');
+  }));
 </script>
 
 </body>
