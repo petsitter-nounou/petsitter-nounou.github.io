@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ご利用料金表 | ペットシッター nounou -ヌヌ-</title>
+  <meta name="description" content="ペットシッターnounouの料金表。お世話代行・お散歩代行のご利用料金をご確認いただけます。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== ページヒーロー ===== */
+    .page-hero {
+      background: var(--beige);
+      padding: 56px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--brown-pale);
+    }
+    .page-hero .section-label { margin-bottom: 8px; }
+    .page-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    /* ===== 料金セクション ===== */
+    .pricing-section { background: var(--white); }
+    .pricing-block { margin-bottom: 60px; }
+    .pricing-block:last-child { margin-bottom: 0; }
+
+    .pricing-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .pricing-header .p-icon { font-size: 1.8rem; }
+    .pricing-header h2 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    /* 料金テーブル */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: 0.92rem;
+    }
+    .price-table thead th {
+      background: var(--brown);
+      color: #fff;
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .price-table tbody tr:nth-child(even) {
+      background: var(--cream);
+    }
+    .price-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--brown-pale);
+      color: var(--text);
+    }
+    .price-table tbody td:not(:first-child) {
+      text-align: center;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .price-table tfoot td {
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: var(--beige);
+    }
+
+    /* 計算例 */
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 4px;
+    }
+    .example-card {
+      background: var(--beige);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      border-left: 3px solid var(--brown-light);
+    }
+    .example-card .ex-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--brown-light);
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .example-card .ex-result {
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    /* ===== その他費用 ===== */
+    .other-section { background: var(--beige); }
+    .other-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .other-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .other-card .card-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .other-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--beige);
+    }
+    .other-card ul { list-style: none; }
+    .other-card ul li {
+      font-size: 0.88rem;
+      color: var(--text);
+      padding: 5px 0;
+      line-height: 1.7;
+      display: flex;
+      gap: 6px;
+    }
+    .other-card ul li::before { content: '・'; color: var(--brown-light); flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .example-grid { grid-template-columns: 1fr; }
+      .other-grid { grid-template-columns: 1fr; }
+      .price-table { font-size: 0.82rem; }
+      .price-table thead th,
+      .price-table tbody td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== ナビ ===== -->
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">🐾 Petsitter nounou</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#features">選ばれる理由</a></li>
+        <li><a href="index.html#services">サービス</a></li>
+        <li><a href="how-to.html">ご利用方法</a></li>
+        <li><a href="about.html">自己紹介</a></li>
+        <li><a href="pricing.html" style="color:var(--brown);">ご利用料金表</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">LINE で相談する</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== ページヒーロー ===== -->
+<div class="page-hero">
+  <p class="section-label">Pricing</p>
+  <h1>ご利用料金表</h1>
+  <p>料金はお世話する動物の種類・頭数によって異なります。<br>お気軽にご相談ください。</p>
+</div>
+
+<!-- ===== 料金表 ===== -->
+<section class="pricing-section">
+  <div class="container">
+
+    <!-- お世話代行 -->
+    <div class="pricing-block">
+      <div class="pricing-header">
+        <div class="p-icon">🐾</div>
+        <h2>お世話代行</h2>
+      </div>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>内容</th>
+            <th>料金（1回あたり）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>基本料金（1匹目）</td>
+            <td>4,500円</td>
+          </tr>
+          <tr>
+            <td>2匹目以降（1匹につき）</td>
+            <td>＋1,000円</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">※ 1回60分程度。内容はご飯・トイレ・お遊び・ブラッシング等。ペットの状況に合わせてプランをご相談します。</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="example-grid">
+        <div class="example-card">
+          <div class="ex-label">計算例①</div>
+          小型犬1匹 ＋ 猫1匹<br>
+          <span class="ex-result">4,500円 ＋ 1,000円 ＝ 5,500円</span>
+        </div>
+        <div class="example-card">
+          <div class="ex-label">計算例②</div>
+          小型犬1匹 ＋ 猫2匹<br>
+          <span class="ex-result">4,500円 ＋ 1,000円×2 ＝ 6,500円</span>
+        </div>
+        <div class="example-card">
+          <div class="ex-label">計算例③</div>
+          猫5匹<br>
+          <span class="ex-result">4,500円 ＋ 1,000円×3 ＝ 7,500円</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- お散歩代行 -->
+    <div class="pricing-block">
+      <div class="pricing-header">
+        <div class="p-icon">🦮</div>
+        <h2>お散歩代行</h2>
+      </div>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>内容</th>
+            <th>料金（1回あたり）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>小型犬（基本・30分）</td>
+            <td>3,000円</td>
+          </tr>
+          <tr>
+            <td>中型犬（基本・30分）</td>
+            <td>3,500円</td>
+          </tr>
+          <tr>
+            <td>大型犬（基本・30分）</td>
+            <td>4,000円</td>
+          </tr>
+          <tr>
+            <td>2頭目以降（小型犬）</td>
+            <td>＋1,000円</td>
+          </tr>
+          <tr>
+            <td>2頭目以降（大型犬）</td>
+            <td>＋2,000円</td>
+          </tr>
+          <tr>
+            <td>延長（15分ごと）</td>
+            <td>＋1,000円</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">※ 安全のためダブルリードを使用。普段のコースをそのまま散歩します。</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="example-grid">
+        <div class="example-card">
+          <div class="ex-label">計算例①</div>
+          小型犬1頭 ＋ 小型犬1頭<br>
+          <span class="ex-result">3,000円 ＋ 1,000円 ＝ 4,000円</span>
+        </div>
+        <div class="example-card">
+          <div class="ex-label">計算例②</div>
+          中型犬1頭 ＋ 小型犬1頭<br>
+          <span class="ex-result">3,500円 ＋ 1,000円 ＝ 4,500円</span>
+        </div>
+        <div class="example-card">
+          <div class="ex-label">計算例③</div>
+          大型犬1頭 ＋ 大型犬1頭 ＋ 延長15分<br>
+          <span class="ex-result">4,000円 ＋ 2,000円 ＋ 1,000円 ＝ 7,000円</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== その他費用 ===== -->
+<section class="other-section">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom:40px;">その他の費用</h2>
+    <div class="other-grid">
+      <div class="other-card">
+        <div class="card-icon">📝</div>
+        <h3>初期費用</h3>
+        <ul>
+          <li>カルテ登録料：1,000円 / 1匹</li>
+          <li>事前カウンセリング料：2,000円</li>
+        </ul>
+      </div>
+      <div class="other-card">
+        <div class="card-icon">🚃</div>
+        <h3>出張費</h3>
+        <ul>
+          <li>公共交通機関でのご自宅までの所要時間が30分を超えた場合：500円</li>
+          <li>以降15分ごとに：＋500円</li>
+          <li>Google Maps の経路検索を参考に算出します</li>
+        </ul>
+      </div>
+      <div class="other-card">
+        <div class="card-icon">❌</div>
+        <h3>キャンセル料</h3>
+        <ul>
+          <li>2日前：料金の30%</li>
+          <li>前日：料金の50%</li>
+          <li>当日：料金の100%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTAバナー ===== -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>料金についてのご質問もお気軽に</h2>
+    <p>複数のペットがいる方、特殊なご要望がある方も<br>まずはご相談ください。</p>
+    <div class="cta-btns">
+      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">💬 LINE で相談する</a>
+      <a href="tel:08062432219" class="btn" style="background:#fff; color:var(--brown);">📞 電話で相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">ホーム</a>
+    <a href="index.html#services">サービス</a>
+    <a href="how-to.html">ご利用方法</a>
+    <a href="about.html">自己紹介</a>
+    <a href="pricing.html">ご利用料金表</a>
+    <a href="index.html#contact">お問い合わせ</a>
+  </div>
+  <p>© 2025 Petsitter nounou. All rights reserved.</p>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links  = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>

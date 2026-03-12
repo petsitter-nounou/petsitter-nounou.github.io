@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自己紹介 | ペットシッター nounou -ヌヌ-</title>
+  <meta name="description" content="ペットシッターnounouのシッター・齋藤愛（まなみ）のご紹介。動物看護師として5年間の経験を持つ、3児のママさんシッターです。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== ページヒーロー ===== */
+    .page-hero {
+      background: var(--beige);
+      padding: 56px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--brown-pale);
+    }
+    .page-hero .section-label { margin-bottom: 8px; }
+    .page-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    /* ===== プロフィール ===== */
+    .profile-section { background: var(--white); }
+    .profile-inner {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 56px;
+      align-items: start;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .profile-photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    .profile-photo img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .profile-name {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .profile-ruby {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .profile-tagline {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 2;
+      margin-bottom: 24px;
+    }
+    .profile-story {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 2;
+      margin-bottom: 12px;
+    }
+    .profile-hobby {
+      display: inline-block;
+      background: var(--beige);
+      color: var(--brown);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-top: 8px;
+      margin-bottom: 28px;
+    }
+
+    /* ===== 資格バッジ ===== */
+    .qual-section { background: var(--beige); }
+    .qual-title {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .qual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .qual-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .qual-card .qual-icon { font-size: 2rem; margin-bottom: 12px; }
+    .qual-card h3 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    .qual-card .qual-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== 動物取扱業者標識 ===== */
+    .license-section { background: var(--white); }
+    .license-box {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      border: 1px solid var(--brown-pale);
+    }
+    .license-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--brown-pale);
+    }
+    .license-list { list-style: none; }
+    .license-list li {
+      font-size: 0.9rem;
+      color: var(--text);
+      padding: 8px 0;
+      border-bottom: 1px dotted var(--brown-pale);
+      display: flex;
+      gap: 12px;
+    }
+    .license-list li:last-child { border-bottom: none; }
+    .license-list li .lbl {
+      color: var(--text-muted);
+      flex-shrink: 0;
+      min-width: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .profile-inner { grid-template-columns: 1fr; gap: 28px; }
+      .profile-photo img { height: 300px; object-position: center 15%; }
+      .qual-grid { grid-template-columns: 1fr; }
+      .license-box { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== ナビ ===== -->
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">🐾 Petsitter nounou</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#features">選ばれる理由</a></li>
+        <li><a href="index.html#services">サービス</a></li>
+        <li><a href="how-to.html">ご利用方法</a></li>
+        <li><a href="about.html" style="color:var(--brown);">自己紹介</a></li>
+        <li><a href="pricing.html">ご利用料金表</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">LINE で相談する</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== ページヒーロー ===== -->
+<div class="page-hero">
+  <p class="section-label">About nounou</p>
+  <h1>自己紹介</h1>
+  <p>大切なペットをお預かりするシッターをご紹介します。</p>
+</div>
+
+<!-- ===== プロフィール ===== -->
+<section class="profile-section">
+  <div class="container">
+    <div class="profile-inner">
+      <div class="profile-photo">
+        <img src="images/profile-manami.jpg" alt="ペットシッター nounou シッター 齋藤愛">
+      </div>
+      <div>
+        <h2 class="profile-name">齋藤 愛</h2>
+        <p class="profile-ruby">さいとう まなみ</p>
+        <p class="profile-tagline">
+          子供3人と柴犬の「つくし」、マンチカンの「こたつ」を育てるママさんシッター
+        </p>
+        <p class="profile-story">
+          大学卒業後、動物病院にて動物看護師として約5年間勤務。
+          結婚・出産を機に現場を退くことになりましたが、動物に関わる仕事を諦めきれず、ペットシッターになることを決意しました。
+        </p>
+        <p class="profile-story">
+          現在は、さまざまなご家庭のペットさんの nounou（シッター・乳母）として活動中です。
+          子育ての経験も活かしながら、一人ひとりのペットに寄り添ったお世話を心がけています。
+        </p>
+        <span class="profile-hobby">趣味：晩酌 ＆ ジェルネイル</span>
+        <div class="about-tags">
+          <span class="tag">🐾 動物看護師 5年経験</span>
+          <span class="tag">👶 3児のママ</span>
+          <span class="tag">🐕 柴犬・猫と暮らし中</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 資格 ===== -->
+<section class="qual-section">
+  <div class="container">
+    <h2 class="qual-title">保有資格・登録</h2>
+    <div class="qual-grid">
+      <div class="qual-card">
+        <div class="qual-icon">🩺</div>
+        <h3>愛玩動物看護師</h3>
+        <p class="qual-date">令和5年7月1日 取得</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">📋</div>
+        <h3>動物取扱責任者</h3>
+        <p class="qual-date">令和6年1月12日 取得</p>
+      </div>
+      <div class="qual-card">
+        <div class="qual-icon">📜</div>
+        <h3>ペットシッター士</h3>
+        <p class="qual-date">令和6年2月2日 取得</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 動物取扱業者標識 ===== -->
+<section class="license-section">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom:32px;">第一種動物取扱業者標識</h2>
+    <div class="license-box">
+      <ul class="license-list">
+        <li><span class="lbl">①氏名</span>合同会社OMSB</li>
+        <li><span class="lbl">②事業所</span>nounou</li>
+        <li><span class="lbl">③所在地</span>東京都中央区晴海3-13-1-3104</li>
+        <li><span class="lbl">④種別</span>保管</li>
+        <li><span class="lbl">⑤登録番号</span>23東京都保第008043号</li>
+        <li><span class="lbl">⑥登録日</span>令和6年1月12日</li>
+        <li><span class="lbl">⑦有効期限</span>令和11年1月11日</li>
+        <li><span class="lbl">⑧責任者</span>齋藤愛</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTAバナー ===== -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>ご予約・ご質問は LINE または お電話にて承っております。<br>初回のご相談は無料です。</p>
+    <div class="cta-btns">
+      <a href="https://lin.ee/JWLn2HG" target="_blank" class="btn btn-line">💬 LINE で相談する</a>
+      <a href="tel:08062432219" class="btn" style="background:#fff; color:var(--brown);">📞 電話で相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">ホーム</a>
+    <a href="index.html#services">サービス</a>
+    <a href="how-to.html">ご利用方法</a>
+    <a href="about.html">自己紹介</a>
+    <a href="pricing.html">ご利用料金表</a>
+    <a href="index.html#contact">お問い合わせ</a>
+  </div>
+  <p>© 2025 Petsitter nounou. All rights reserved.</p>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links  = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
