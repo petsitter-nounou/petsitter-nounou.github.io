@@ -629,13 +629,59 @@ fetch('https://holidays-jp.github.io/api/v1/date.json')
   })
   .catch(() => {}); // API不達でも動作継続
 
-// flatpickr 日付ピッカー初期化
+// 日付変更時の共通処理（flatpickr・ネイティブ両対応）
+function onDateChange(visitId, dateStr) {
+  if (!dateStr) return;
+  const d   = new Date(dateStr + 'T00:00:00');
+  const dow = d.getDay();
+  const isHol = !!jpHolidays[dateStr];
+
+  // 祝日チェックボックス自動セット
+  const cb  = document.getElementById(`holiday-${visitId}`);
+  const lbl = document.getElementById(`label-hol-${visitId}`);
+  if (cb) {
+    cb.checked = isHol;
+    lbl.classList.toggle('checked', isHol);
+  }
+
+  // 祝日名ラベル表示
+  const autoLabel = document.getElementById(`hol-auto-${visitId}`);
+  if (autoLabel) {
+    autoLabel.textContent = isHol ? `🎌 ${jpHolidays[dateStr]}（自動検出）` : '';
+  }
+
+  // 曜日バッジ更新
+  const badge = document.getElementById(`dow-badge-${visitId}`);
+  if (badge) {
+    const names = ['日','月','火','水','木','金','土'];
+    if (dow === 0 || isHol) {
+      badge.className = 'date-dow-badge dow-sun';
+      badge.textContent = names[dow] + '曜日';
+    } else if (dow === 6) {
+      badge.className = 'date-dow-badge dow-sat';
+      badge.textContent = '土曜日';
+    } else {
+      badge.className = 'date-dow-badge dow-week';
+      badge.textContent = names[dow] + '曜日';
+    }
+  }
+
+  updateSurchargeBadges(visitId);
+}
+
+// flatpickr 日付ピッカー初期化（CDN読み込み成功時のみ強化）
 function initDatePicker(visitId) {
   const today = new Date().toISOString().slice(0, 10);
   const input = document.getElementById(`date-${visitId}`);
-  if (!input || !window.flatpickr) return;
+  if (!input) return;
 
-  const fp = flatpickr(input, {
+  // ネイティブ日付ピッカーで初期値トリガー
+  onDateChange(visitId, today);
+
+  // flatpickrが読み込まれていない場合はネイティブのまま使用
+  if (!window.flatpickr) return;
+
+  flatpickr(input, {
     locale: {
       firstDayOfWeek: 0,
       weekdays: {
@@ -649,11 +695,10 @@ function initDatePicker(visitId) {
     },
     dateFormat: 'Y-m-d',
     defaultDate: today,
-    disableMobile: true,
+    disableMobile: false,
     onDayCreate: function(dObj, dStr, fp, dayElem) {
-      const d    = dayElem.dateObj;
-      const ds   = d.toISOString().slice(0, 10);
-      const dow  = d.getDay();
+      const ds  = dayElem.dateObj.toISOString().slice(0, 10);
+      const dow = dayElem.dateObj.getDay();
       if (dow === 0) dayElem.classList.add('sun');
       if (dow === 6) dayElem.classList.add('sat');
       if (jpHolidays[ds]) {
@@ -662,47 +707,9 @@ function initDatePicker(visitId) {
       }
     },
     onChange: function(selectedDates, dateStr) {
-      if (!dateStr) return;
-      const d   = new Date(dateStr + 'T00:00:00');
-      const dow = d.getDay();
-      const isHol = !!jpHolidays[dateStr];
-
-      // 祝日チェックボックス自動セット
-      const cb  = document.getElementById(`holiday-${visitId}`);
-      const lbl = document.getElementById(`label-hol-${visitId}`);
-      if (cb) {
-        cb.checked = isHol;
-        lbl.classList.toggle('checked', isHol);
-      }
-
-      // 祝日名ラベル表示
-      const autoLabel = document.getElementById(`hol-auto-${visitId}`);
-      if (autoLabel) {
-        autoLabel.textContent = isHol ? `🎌 ${jpHolidays[dateStr]}（自動検出）` : '';
-      }
-
-      // 日付ラベルの曜日バッジ更新
-      const badge = document.getElementById(`dow-badge-${visitId}`);
-      if (badge) {
-        const names = ['日','月','火','水','木','金','土'];
-        if (dow === 0 || isHol) {
-          badge.className = 'date-dow-badge dow-sun';
-          badge.textContent = names[dow] + '曜日';
-        } else if (dow === 6) {
-          badge.className = 'date-dow-badge dow-sat';
-          badge.textContent = '土曜日';
-        } else {
-          badge.className = 'date-dow-badge dow-week';
-          badge.textContent = names[dow] + '曜日';
-        }
-      }
-
-      updateSurchargeBadges(visitId);
+      onDateChange(visitId, dateStr);
     },
   });
-
-  // 初期値をトリガー
-  fp.setDate(today, true);
 }
 
 // =====================================================
@@ -737,7 +744,7 @@ function addVisit() {
     <div class="field-row">
       <div class="field">
         <label>日付<span class="required">＊</span><span id="dow-badge-${id}" class="date-dow-badge"></span></label>
-        <input type="text" id="date-${id}" placeholder="日付を選択" readonly style="cursor:pointer;">
+        <input type="date" id="date-${id}" value="${today}" onchange="onDateChange(${id}, this.value)">
       </div>
       <div class="field">
         <label>開始時刻<span class="required">＊</span></label>
