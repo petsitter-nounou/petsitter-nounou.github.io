@@ -76,7 +76,9 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-.nav-brand { font-size: 1rem; font-weight: 700; color: var(--brown); letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0; }
+.nav-brand { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 700; color: var(--brown); letter-spacing: 0.04em; flex-shrink: 0; line-height: 1.15; }
+.nav-brand .brand-icon { font-size: 1.15rem; line-height: 1; }
+.nav-brand .brand-text { display: inline-flex; flex-direction: column; }
 .nav-links { display: flex; gap: 14px; flex-wrap: nowrap; }
 .nav-links a { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; transition: color 0.2s; white-space: nowrap; }
 .nav-links a:hover { color: var(--brown); }
