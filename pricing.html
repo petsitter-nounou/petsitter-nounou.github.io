@@ -147,10 +147,16 @@
       color: var(--text);
       padding: 5px 0;
       line-height: 1.7;
-      display: flex;
-      gap: 6px;
+      position: relative;
+      padding-left: 1em;
     }
-    .other-card ul li::before { content: '・'; color: var(--brown-light); flex-shrink: 0; }
+    .other-card ul li::before {
+      content: '・';
+      color: var(--brown-light);
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
 
     @media (max-width: 768px) {
       .example-grid { grid-template-columns: 1fr; }
