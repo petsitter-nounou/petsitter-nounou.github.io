@@ -6,7 +6,7 @@
   <title>お見積もり作成 | Petsitter nounou -ヌヌ-</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <style>
     /* ===== ページ全体 ===== */
     .page-hero {
@@ -430,7 +430,7 @@
 <!-- ===== ナビ ===== -->
 <header>
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand"><span class="brand-icon">🐾</span><span class="brand-text"><span>Petsitter</span><span>nounou</span></span></a>
+    <a href="index.html" class="nav-brand"><span class="brand-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg></span><span class="brand-text"><span>Petsitter</span><span>nounou</span></span></a>
     <nav>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html#features">選ばれる理由</a></li>
@@ -455,7 +455,7 @@
 <!-- ===== ページヒーロー ===== -->
 <div class="page-hero">
   <p class="section-label">見積もり作成ツール</p>
-  <h1>🧮 お見積もり作成</h1>
+  <h1><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg> お見積もり作成</h1>
   <p>日程・サービス内容を入力して金額を自動計算します</p>
 </div>
 
@@ -467,7 +467,7 @@
 
     <!-- クライアント情報 -->
     <div class="est-section">
-      <h2>👤 お客様情報</h2>
+      <h2><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> お客様情報</h2>
 
       <div class="field">
         <label>お客様名<span class="required">＊</span></label>
@@ -494,14 +494,14 @@
 
     <!-- 訪問スケジュール -->
     <div class="est-section">
-      <h2>📅 訪問スケジュール</h2>
+      <h2><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 訪問スケジュール</h2>
       <div id="visits-container"></div>
       <button class="add-visit-btn" onclick="addVisit()">＋ 訪問を追加する</button>
     </div>
 
     <!-- 出張費 -->
     <div class="est-section">
-      <h2>🚃 出張費</h2>
+      <h2><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"/><path d="m9 15-1-1"/><path d="m15 15 1-1"/><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"/><path d="m8 19-2 3"/><path d="m16 19 2 3"/></svg> 出張費</h2>
       <div class="field">
         <label>出張費（片道所要時間が30分超の場合）</label>
         <div class="check-group">
@@ -525,14 +525,14 @@
     </div>
 
     <!-- 計算ボタン -->
-    <button class="calc-btn" onclick="calcEstimate()">💰 見積もりを計算する</button>
+    <button class="calc-btn" onclick="calcEstimate()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg> 見積もりを計算する</button>
   </div>
 
   <!-- ===== 見積もり結果 ===== -->
   <div id="result-section">
     <div class="result-card" id="result-card">
       <div class="result-header">
-        <div class="brand">🐾 Petsitter nounou -ヌヌ-</div>
+        <div class="brand"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg> Petsitter nounou -ヌヌ-</div>
         <h2>お見積もり</h2>
         <div class="client-name" id="r-client"></div>
         <div class="issue-date" id="r-date"></div>
@@ -552,7 +552,7 @@
     </div>
 
     <div class="result-actions">
-      <button class="copy-line-btn" onclick="copyLineText()">💬 LINEで送れるテキストをコピー</button>
+      <button class="copy-line-btn" onclick="copyLineText()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> LINEで送れるテキストをコピー</button>
       <button class="reset-btn" onclick="resetForm()">← 入力に戻る</button>
     </div>
   </div>
@@ -648,7 +648,7 @@ function onDateChange(visitId, dateStr) {
   // 祝日名ラベル表示
   const autoLabel = document.getElementById(`hol-auto-${visitId}`);
   if (autoLabel) {
-    autoLabel.textContent = isHol ? `🎌 ${jpHolidays[dateStr]}（自動検出）` : '';
+    autoLabel.textContent = isHol ? `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg> ${jpHolidays[dateStr]}（自動検出）` : '';
   }
 
   // 曜日バッジ更新
@@ -736,8 +736,8 @@ function addVisit() {
     <div class="field">
       <label>サービス種別<span class="required">＊</span></label>
       <div class="service-tabs">
-        <button type="button" class="service-tab active" onclick="switchService(${id}, 'care')" id="tab-care-${id}">🐾 お世話代行</button>
-        <button type="button" class="service-tab" onclick="switchService(${id}, 'walk')" id="tab-walk-${id}">🦮 お散歩代行</button>
+        <button type="button" class="service-tab active" onclick="switchService(${id}, 'care')" id="tab-care-${id}"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg> お世話代行</button>
+        <button type="button" class="service-tab" onclick="switchService(${id}, 'walk')" id="tab-walk-${id}"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M11.25 16.25h1.5L12 17z"/><path d="M16 14v.5"/><path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"/><path d="M8 14v.5"/><path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"/></svg> お散歩代行</button>
       </div>
     </div>
 
@@ -850,7 +850,7 @@ function updateSurchargeBadges(id) {
     container.innerHTML += `<span class="badge badge-night">時間外割増 +1,000円</span>`;
   }
   if (season) {
-    container.innerHTML += `<span class="badge badge-season">⚡ ハイシーズン ×1.3</span>`;
+    container.innerHTML += `<span class="badge badge-season"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> ハイシーズン ×1.3</span>`;
   }
   container.innerHTML += `<span class="badge badge-info">${dow}曜日</span>`;
 
@@ -988,7 +988,7 @@ function calcEstimate() {
         <div style="font-weight:700;">${e.label}</div>
         <div class="td-sub">${e.detail}</div>
         ${e.surchargeLabel ? `<div class="td-sub" style="color:#c0392b;">▲ ${e.surchargeLabel}</div>` : ''}
-        ${e.seasonLabel    ? `<div class="td-sub" style="color:#b7950b;">⚡ ${e.seasonLabel}</div>` : ''}
+        ${e.seasonLabel    ? `<div class="td-sub" style="color:#b7950b;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> ${e.seasonLabel}</div>` : ''}
       </td>
       <td class="td-right">${fmt(e.finalPrice)}</td>
     `;
