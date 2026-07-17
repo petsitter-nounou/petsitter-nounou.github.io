@@ -810,18 +810,11 @@ function addVisit() {
       </div>
     </div>
 
-    <!-- 医療補助・介護ケア（オプション、共通） -->
+    <!-- 医療補助・介護ケア（オプション、明細形式） -->
     <div class="field">
-      <label>医療補助・介護ケア（オプション）<small style="font-weight:400; color:var(--brown-light);">　500〜1,000円 / 1回</small></label>
-      <select id="medical-${id}">
-        <option value="0">なし</option>
-        <option value="500">500円</option>
-        <option value="600">600円</option>
-        <option value="700">700円</option>
-        <option value="800">800円</option>
-        <option value="900">900円</option>
-        <option value="1000">1,000円</option>
-      </select>
+      <label>医療補助・介護ケア（オプション）<small style="font-weight:400; color:var(--brown-light);">　1件あたり 500〜1,000円</small></label>
+      <div id="medical-list-${id}"></div>
+      <button type="button" onclick="addMedicalItem(${id})" style="margin-top:8px; padding:10px 16px; background:var(--cream); border:1px dashed var(--brown-light); border-radius:8px; color:var(--brown); font-weight:600; font-size:0.88rem; cursor:pointer; width:100%;">＋ オプション明細を追加</button>
     </div>
   `;
   document.getElementById('visits-container').appendChild(div);
@@ -838,6 +831,54 @@ function switchService(id, type) {
   document.getElementById(`tab-walk-${id}`).classList.toggle('active', type === 'walk');
   document.getElementById(`care-opts-${id}`).style.display = type === 'care' ? '' : 'none';
   document.getElementById(`walk-opts-${id}`).style.display = type === 'walk' ? '' : 'none';
+}
+
+// =====================================================
+// 医療補助・介護ケア明細（訪問エントリー内で複数追加可）
+// =====================================================
+let medicalItemCounter = 0;
+function addMedicalItem(visitId) {
+  medicalItemCounter++;
+  const itemId = medicalItemCounter;
+  const list = document.getElementById(`medical-list-${visitId}`);
+  const row = document.createElement('div');
+  row.id = `medical-item-${itemId}`;
+  row.className = 'medical-item';
+  row.dataset.visitId = visitId;
+  row.style.cssText = 'display:grid; grid-template-columns: 1fr 1.4fr auto auto; gap:8px; align-items:center; margin-top:8px; padding:10px; background:var(--cream); border-radius:8px;';
+  row.innerHTML = `
+    <input type="text" placeholder="対象（例：たろう）" id="med-target-${itemId}" style="padding:6px 10px; border:1px solid var(--brown-pale); border-radius:6px; font-size:0.88rem;">
+    <input type="text" placeholder="内容（例：投薬補助）" id="med-desc-${itemId}" style="padding:6px 10px; border:1px solid var(--brown-pale); border-radius:6px; font-size:0.88rem;">
+    <select id="med-amount-${itemId}" style="padding:6px 10px; border:1px solid var(--brown-pale); border-radius:6px; font-size:0.88rem; background:#fff;">
+      <option value="500">500円</option>
+      <option value="600">600円</option>
+      <option value="700">700円</option>
+      <option value="800">800円</option>
+      <option value="900">900円</option>
+      <option value="1000">1,000円</option>
+    </select>
+    <button type="button" onclick="removeMedicalItem(${itemId})" style="padding:6px 10px; background:transparent; border:1px solid var(--brown-pale); border-radius:6px; color:var(--text-muted); cursor:pointer; font-size:0.85rem;" aria-label="削除">✕</button>
+  `;
+  list.appendChild(row);
+}
+
+function removeMedicalItem(itemId) {
+  const el = document.getElementById(`medical-item-${itemId}`);
+  if (el) el.remove();
+}
+
+function collectMedicalItems(visitId) {
+  const list = document.getElementById(`medical-list-${visitId}`);
+  if (!list) return [];
+  const items = [];
+  list.querySelectorAll('.medical-item').forEach(row => {
+    const idPart = row.id.replace('medical-item-', '');
+    const target = document.getElementById(`med-target-${idPart}`).value.trim();
+    const desc   = document.getElementById(`med-desc-${idPart}`).value.trim();
+    const amount = parseInt(document.getElementById(`med-amount-${idPart}`).value) || 0;
+    if (amount > 0) items.push({ target, desc, amount });
+  });
+  return items;
 }
 
 function updateSurchargeBadges(id) {
@@ -964,9 +1005,9 @@ function calcEstimate() {
       surchargeLabel = `時間外割増 +${fmt(surcharge)}`;
     }
 
-    // 医療補助・介護ケア（オプション）
-    const medical = parseInt(document.getElementById(`medical-${i}`).value) || 0;
-    const medicalLabel = medical > 0 ? `医療補助・介護ケア +${fmt(medical)}` : '';
+    // 医療補助・介護ケア（オプション、明細形式）
+    const medicalItems = collectMedicalItems(i);
+    const medical = medicalItems.reduce((sum, m) => sum + m.amount, 0);
 
     const subtotal = base + surcharge + medical;
 
@@ -977,7 +1018,7 @@ function calcEstimate() {
       seasonLabel = `ハイシーズン30%増（${fmt(subtotal)}×1.3）`;
     }
 
-    entries.push({ label, detail, base, surcharge, surchargeLabel, medical, medicalLabel, subtotal, finalPrice, seasonLabel, dow, dateVal, timeVal });
+    entries.push({ label, detail, base, surcharge, surchargeLabel, medicalItems, medical, subtotal, finalPrice, seasonLabel, dow, dateVal, timeVal });
   }
 
   if (entries.length === 0) {
@@ -1006,7 +1047,7 @@ function calcEstimate() {
         <div style="font-weight:700;">${e.label}</div>
         <div class="td-sub">${e.detail}</div>
         ${e.surchargeLabel ? `<div class="td-sub" style="color:#c0392b;">▲ ${e.surchargeLabel}</div>` : ''}
-        ${e.medicalLabel   ? `<div class="td-sub">＋ ${e.medicalLabel}</div>` : ''}
+        ${e.medicalItems && e.medicalItems.length ? e.medicalItems.map(m => `<div class="td-sub">＋ ${[m.target, m.desc].filter(Boolean).join('　') || '医療補助・介護ケア'} +${fmt(m.amount)}</div>`).join('') : ''}
         ${e.seasonLabel    ? `<div class="td-sub" style="color:#b7950b;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.15em;display:inline-block"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> ${e.seasonLabel}</div>` : ''}
       </td>
       <td class="td-right">${fmt(e.finalPrice)}</td>
@@ -1091,7 +1132,12 @@ function copyLineText() {
     const svc = e.label.startsWith('お世話') ? 'お世話代行' : 'お散歩代行';
     lines.push(`　${svc}：${fmt(e.finalPrice)}`);
     if (e.surchargeLabel) lines.push(`　　└ ${e.surchargeLabel}`);
-    if (e.medicalLabel)   lines.push(`　　└ ${e.medicalLabel}`);
+    if (e.medicalItems && e.medicalItems.length) {
+      e.medicalItems.forEach(m => {
+        const name = [m.target, m.desc].filter(Boolean).join('　') || '医療補助・介護ケア';
+        lines.push(`　　└ ${name} +${fmt(m.amount)}`);
+      });
+    }
     if (e.seasonLabel)    lines.push(`　　└ ハイシーズン30%増`);
   });
 
