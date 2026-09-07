@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://petsitter-nounou.github.io/</loc>
+    <loc>https://petsitter-nounou.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://petsitter-nounou.github.io/about.html</loc>
+    <loc>https://petsitter-nounou.com/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://petsitter-nounou.github.io/how-to.html</loc>
+    <loc>https://petsitter-nounou.com/how-to.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://petsitter-nounou.github.io/pricing.html</loc>
+    <loc>https://petsitter-nounou.com/pricing.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://petsitter-nounou.github.io/contact.html</loc>
+    <loc>https://petsitter-nounou.com/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://petsitter-nounou.github.io/terms.html</loc>
+    <loc>https://petsitter-nounou.com/terms.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://petsitter-nounou.github.io/privacy.html</loc>
+    <loc>https://petsitter-nounou.com/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
